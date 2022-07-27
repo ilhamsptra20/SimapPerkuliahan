@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+    @apply transition duration-1000 translate-x-0;
+}
+
+.deactive {
+    @apply transition duration-1000 -translate-x-64;
+}
+
+.toggle{
+    @apply block transition duration-1000 translate-x-14;
+}
