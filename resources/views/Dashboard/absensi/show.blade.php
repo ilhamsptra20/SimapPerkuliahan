@@ -24,6 +24,18 @@
                             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                 Nama
                             </th> 
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
+                                M
+                            </th>
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
+                                I
+                            </th> 
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
+                                S
+                            </th> 
+                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
+                                A
+                            </th> 
                             @foreach ($jadwal as $tanggal)
                                 <th scope="col" class="border text-sm font-medium text-white text-center {{ strtotime($tanggal->tanggal) > strtotime(date('Y-m-d')) ? '' : 'lg:hover:text-blue-400' }}">
                                     @if ( strtotime($tanggal->tanggal) > strtotime(date('Y-m-d')))
@@ -37,18 +49,6 @@
                                     @endif
                                 </th>
                             @endforeach
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
-                                M
-                            </th>
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
-                                I
-                            </th> 
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
-                                S
-                            </th> 
-                            <th scope="col" class="text-sm font-medium text-gray-900 px-2 py-4 text-center border">
-                                A
-                            </th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +57,18 @@
                                 <td class="px-2 border py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-center">{{ $loop->iteration }}</td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                     {{ $mahasiswa->nama }}
+                                </td>
+                                <td class="text-center px-2 py-4 whitespace-nowrap border">
+                                    {{ $mahasiswa->absensi->where('status', 'm')->count() }}
+                                </td>
+                                <td class="text-center px-2 py-4 whitespace-nowrap border">
+                                    {{ $mahasiswa->absensi->where('status', 'i')->count() }}
+                                </td>
+                                <td class="text-center px-2 py-4 whitespace-nowrap border">
+                                    {{ $mahasiswa->absensi->where('status', 's')->count() }}
+                                </td>
+                                <td class="text-center px-2 py-4 whitespace-nowrap border">
+                                    {{ $mahasiswa->absensi->where('status', 'a')->count() }}
                                 </td>
                                 @foreach ($jadwal as $tanggal)
                                 <td class="text-center px-6 py-2 whitespace-nowrap border">
@@ -91,18 +103,6 @@
                                     @endforeach   
                                 </td>
                                 @endforeach
-                                <td class="text-center px-2 py-4 whitespace-nowrap border">
-                                    {{ $mahasiswa->absensi->where('status', 'm')->count() }}
-                                </td>
-                                <td class="text-center px-2 py-4 whitespace-nowrap border">
-                                    {{ $mahasiswa->absensi->where('status', 'i')->count() }}
-                                </td>
-                                <td class="text-center px-2 py-4 whitespace-nowrap border">
-                                    {{ $mahasiswa->absensi->where('status', 's')->count() }}
-                                </td>
-                                <td class="text-center px-2 py-4 whitespace-nowrap border">
-                                    {{ $mahasiswa->absensi->where('status', 'a')->count() }}
-                                </td>
                             </tr>    
                             @endforeach
                     </tbody>
